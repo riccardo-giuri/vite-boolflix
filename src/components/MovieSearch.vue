@@ -46,9 +46,32 @@ export default {
             }
         },
 
+        buildPostersURL() {
+            this.movieStore.moviesDataList.forEach(
+                function(movieData) {
+                    let baseURL = movieData.poster_path;
+
+                    let completeURL = `https://image.tmdb.org/t/p/w342${baseURL}`;
+
+                    movieData.posterurl = "`https://image.tmdb.org/t/p/w342${baseURL}`";
+                }
+            )
+
+            this.movieStore.tvSeriesDataList.forEach(
+                function(movieData) {
+                    let baseURL = movieData.poster_path;
+
+                    let completeURL = `https://image.tmdb.org/t/p/w342${baseURL}`;
+
+                    movieData.posterurl = completeURL;
+                }
+            )
+        },
+
         fetchAllData(textToSearch) {
             this.fetchMoviesList(textToSearch);
             this.fetchTvSeriesList(textToSearch);
+            this.buildPostersURL();
         }
     }
 };
