@@ -1,12 +1,14 @@
 <script>
 import { movieStore, supportedFlagsCodes } from '../MovieStore';
+import MovieCard from './MovieCard.vue';
 import LangFlag from "vue-lang-code-flags";
 import StarRating from "vue-star-rating";
 
 export default {
     components: {
         LangFlag,
-        StarRating
+        StarRating,
+        MovieCard
     },
 
     data() {
@@ -25,23 +27,7 @@ export default {
 
     <div class="row row-cols-3 mt-4">
         <div class="col mb-4 h-100" v-for="movie in movieStore.moviesDataList">
-            <ul>
-                <li><div> {{ movie.title }}</div></li>
-                <li><div> {{ movie.original_title }}</div></li>
-                <li >
-                    <div v-if="movie.original_language in supportedFlagsCodes">
-                        <LangFlag class="bandiera" :iso="`${movie.original_language}`" :squared="false"></LangFlag>
-                    </div>
-                    <div v-else>
-                        {{ movie.original_language }}
-                    </div>
-                </li>
-                <li><div> {{ movie.vote_average }}</div></li>
-                <li>
-                    <star-rating :rating="Math.round((movie.vote_average / 2))" :show-rating="false" :star-size="25"></star-rating>
-                </li>
-                <li><img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" alt=""></li>
-            </ul>
+            <MovieCard :singleMovie="movie"></MovieCard>
         </div>
     </div>
 
@@ -67,11 +53,21 @@ export default {
                 <li><img :src="`https://image.tmdb.org/t/p/w342${tvSeries.poster_path}`" alt=""></li>
             </ul>
         </div>
+    </div>
 
-        <div class="col">
+    <div class="card_movie">
+        <img class="card_img" :src="`https://image.tmdb.org/t/p/w342/ueI9EeoRdMVa7hWEm21nQEU8Zv3.jpg`" alt="">
 
+        <div class="card_container">
+
+            <h3 class="text-light">SOSSSSS</h3>
+
+            <div class="card-Data">
+                <h5 class="text-light">SOcisdhfvufsfjv</h5>
+            </div>
         </div>
     </div>
+    
 
 
 </template>
@@ -86,6 +82,7 @@ export default {
         width: 342px;
         height: 450px;
         border: 1px solid gray;
+        overflow: hidden;
     }
 
     .fa-star {
@@ -94,4 +91,5 @@ export default {
         display: inline-block;
         color: black;
     }
+
 </style>
