@@ -29,6 +29,26 @@ export default {
                 this.movieStore.moviesDataList = response.data.results;
             })
             }
+        },
+
+        fetchTvSeriesList(textToSearch) {
+            if (textToSearch !== "" && textToSearch !== null) {
+                axios.get("https://api.themoviedb.org/3/search/tv", 
+            {
+                params: {
+                    api_key: "4ae347e97d0eb3c81af3a0abd3b73614",
+                    query: textToSearch,
+                    language: "it-IT",
+                }
+            }).then((response) => {
+                this.movieStore.tvSeriesDataList = response.data.results;
+            })
+            }
+        },
+
+        fetchAllData(textToSearch) {
+            this.fetchMoviesList(textToSearch);
+            this.fetchTvSeriesList(textToSearch);
         }
     }
 };
@@ -37,7 +57,7 @@ export default {
 <template>
     <div class="input-group">
         <input type="text" placeholder="Cerca film/serie tv" v-model="searchText">
-        <button class="btn btn-outline-secondary rounded-0" type="button" @click="fetchMoviesList(searchText)">Cerca</button>
+        <button class="btn btn-outline-secondary rounded-0" type="button" @click="fetchAllData(searchText)">Cerca</button>
     </div>
 </template>
 
