@@ -28,22 +28,34 @@ export default {
 
         <div class="card_container">
             <ul>
-                <li><div> Titolo: {{ singleMovie.title }}</div></li>
-                <li><div> Titolo Originale: {{ singleMovie.original_title }}</div></li>
-                <li >
-                    <div v-if="singleMovie.original_language in supportedFlagsCodes">
-                        <span>Lingua: </span>
+                <li>
+                    <span class="fw-bold fs-6">Titolo: </span>
+                    <span>{{ singleMovie.title}}</span>
+                </li>
+
+                <li>
+                    <span class="fw-bold fs-6">Titolo Originale: </span>
+                    <span>{{singleMovie.original_title}}</span>
+                </li>
+
+                <li>
+                    <div v-if="singleMovie.original_language in supportedFlagsCodes" class="d-flex align-items-center gap-2">
+                        <span class="fw-bold fs-6">Lingua: </span>
                         <LangFlag class="bandiera" :iso="`${singleMovie.original_language}`" :squared="false"></LangFlag>
                     </div>
                     <div v-else>
-                        Lingua: {{ singleMovie.original_language }}
+                        <span class="fw-bold fs-6">Lingua: </span>
+                        <span>{{ singleMovie.original_language }}</span>
                     </div>
                 </li>
                 <li>
                     <star-rating :rating="Math.round((singleMovie.vote_average / 2))" :show-rating="false" :star-size="25" :read-only="true"></star-rating>
                 </li>
 
-                <li><div> Sinossi: {{ singleMovie.overview }}</div></li>
+                <li>
+                    <span class="fw-bold fs-6">Sinossi: </span>
+                    <span>{{ singleMovie.overview }}</span>
+                </li>
             </ul>
         </div>
     </div>
@@ -75,7 +87,7 @@ export default {
         top: 0;
         right: 0;
         position: absolute;
-        opacity: 1;
+        opacity: 0;
         background-color: rgba(15, 15, 16, 0.751);
         backdrop-filter: blur(5px);
         transition: 0.4s;
@@ -92,5 +104,10 @@ export default {
 
     ul {
         padding: 0;
+    }
+
+    .bandiera {
+        width: 20px;
+        height: 20px;
     }
 </style>
