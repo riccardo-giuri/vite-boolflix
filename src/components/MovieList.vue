@@ -23,9 +23,7 @@ export default {
 </script>
 
 <template>
-    <div class="text-center">
-        <h1>MOVIES</h1>
-    </div>
+    <h1>MOVIES</h1>
 
     <div class="row row-cols-3 mt-4">
         <div class="col mb-4 h-100" v-for="movie in movieStore.moviesDataList">
@@ -33,9 +31,7 @@ export default {
         </div>
     </div>
 
-    <div class="text-center">
-        <h1>TV SERIES</h1>
-    </div>
+    <h1>TV SERIES</h1>
 
     <div class="row row-cols-3 mt-4">
 
@@ -65,4 +61,9 @@ export default {
         color: black;
     }
 
+    h1 {
+        font-size: 45px;
+        color: white;
+        text-align: center;
+    }
 </style>

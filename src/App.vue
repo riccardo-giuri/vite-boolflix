@@ -1,11 +1,11 @@
 <script>
-import MovieSearch from './components/MovieSearch.vue';
 import MovieList from './components/MovieList.vue';
+import TheHeader from './components/TheHeader.vue';
 
 export default {
   components: {
-    MovieSearch,
-    MovieList
+    MovieList,
+    TheHeader
   },
 
   data() {
@@ -17,13 +17,21 @@ export default {
 </script>
 
 <template>
-  <div class="container pt-4">
-    <MovieSearch></MovieSearch>
+  <div class="body">
 
+
+  <div class="container pt-4">
+    <TheHeader></TheHeader>
+    
     <MovieList></MovieList>
   </div>
+  </div>
+  
 </template>
 
 <style lang="scss">
-
+  .body {
+    background-color: rgb(23, 23, 23);
+    min-height: 100vh;
+  }
 </style>
